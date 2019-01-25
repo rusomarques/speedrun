@@ -4,6 +4,7 @@ import { withRouter } from 'next/router';
 
 import { loadRun } from './../store/actions';
 import Layout from '../components/Layout/Layout';
+import RunInfo from '../components/RunInfo';
 
 class Run extends Component {
   componentDidMount() {
@@ -12,7 +13,7 @@ class Run extends Component {
   render() {
     let run = null;
     if (this.props.runInfo) {
-      run = <p>PlayerName: {this.props.runInfo.playerName}</p>;
+      run = <RunInfo runInfo={this.props.runInfo} />;
     }
     return <Layout>{run}</Layout>;
   }
