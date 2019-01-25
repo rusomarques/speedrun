@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { loadGames } from './../store/actions';
+import Layout from '../components/Layout/Layout';
+import GameList from '../components/GameList';
 
 class Index extends Component {
   componentDidMount() {
@@ -9,9 +11,19 @@ class Index extends Component {
   }
 
   render() {
-    return <h1>SPEEDRUN</h1>;
+    return (
+      <Layout>
+        <GameList games={this.props.games} />
+      </Layout>
+    );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    games: state.games
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -20,6 +32,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Index);
