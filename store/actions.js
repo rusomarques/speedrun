@@ -1,7 +1,7 @@
 export const actionTypes = {
   LOAD_GAMES: 'LOAD_GAMES',
   LOAD_GAMES_SUCCESS: 'LOAD_GAMES_SUCCESS',
-  FAILURE: 'FAILURE'
+  LOAD_FAILURE: 'LOAD_FAILURE'
 };
 
 export const loadGames = () => {
@@ -17,7 +17,7 @@ export const loadGamesSuccess = data => {
 
 export const loadFailure = error => {
   return {
-    type: actionTypes.FAILURE,
+    type: actionTypes.LOAD_FAILURE,
     error
   };
 };

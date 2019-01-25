@@ -11,7 +11,7 @@ const reducer = (state = initState, action) => {
         ...state,
         games: action.data
       };
-    case actionTypes.FAILURE:
+    case actionTypes.LOAD_FAILURE:
       return {
         ...state,
         ...{ error: action.error }
