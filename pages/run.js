@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
-import { loadRun } from './../store/actions';
+import { loadRun, loadGames } from './../store/actions';
 import Layout from '../components/Layout/Layout';
 import RunInfo from '../components/RunInfo';
 import Game from '../components/Game';
@@ -10,10 +10,17 @@ import Game from '../components/Game';
 class Run extends Component {
   componentDidMount() {
     this.props.onLoadRun(this.props.router.query.gameId);
+    if (!this.props.games) {
+      this.props.onLoadGames();
+    }
   }
   render() {
-    const { gameId } = this.props.router.query;
-    const game = this.props.games.find(game => game.id === gameId);
+    let game = null;
+    if (this.props.games) {
+      const { gameId } = this.props.router.query;
+      const gameDetails = this.props.games.find(game => game.id === gameId);
+      game = <Game gameDetails={gameDetails} />;
+    }
 
     let run = null;
     if (this.props.runInfo) {
@@ -21,7 +28,7 @@ class Run extends Component {
     }
     return (
       <Layout>
-        <Game gameDetails={game} />
+        {game}
         {run}
       </Layout>
     );
@@ -37,7 +44,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLoadRun: gameId => dispatch(loadRun(gameId))
+    onLoadRun: gameId => dispatch(loadRun(gameId)),
+    onLoadGames: () => dispatch(loadGames())
   };
 };
 
