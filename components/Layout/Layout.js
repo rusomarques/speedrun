@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Navbar from './Navbar';
 
 const Layout = props => (
   <div>
@@ -12,7 +13,7 @@ const Layout = props => (
         crossorigin="anonymous"
       />
     </Head>
-    <nav />
+    <Navbar />
     <div className="container">{props.children}</div>
   </div>
 );
