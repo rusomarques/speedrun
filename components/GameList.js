@@ -17,7 +17,19 @@ const GameList = props => {
     });
   }
 
-  return <div className="card-group">{gameList}</div>;
+  return (
+    <React.Fragment>
+      <div id="game-list" className="card-group">
+        {gameList}
+      </div>
+      <style jsx>{`
+        #game-list {
+          justify-content: space-evenly;
+          margin-top: 20px;
+        }
+      `}</style>
+    </React.Fragment>
+  );
 };
 
 export default GameList;
