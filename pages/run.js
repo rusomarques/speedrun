@@ -6,6 +6,7 @@ import { loadRun, loadGames } from './../store/actions';
 import Layout from '../components/Layout/Layout';
 import RunInfo from '../components/RunInfo';
 import Game from '../components/Game';
+import Spinner from '../components/UI/Spinner';
 
 class Run extends Component {
   componentDidMount() {
@@ -15,14 +16,14 @@ class Run extends Component {
     }
   }
   render() {
-    let game = null;
+    let game = <Spinner />;
     if (this.props.games) {
       const { gameId } = this.props.router.query;
       const gameDetails = this.props.games.find(game => game.id === gameId);
       game = <Game gameDetails={gameDetails} />;
     }
 
-    let run = null;
+    let run = <Spinner />;
     if (this.props.runInfo) {
       run = <RunInfo runInfo={this.props.runInfo} />;
     }
