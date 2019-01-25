@@ -2,9 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 
 import Game from './Game';
+import Spinner from './UI/Spinner';
 
 const GameList = props => {
-  let gameList = null;
+  let gameList = <Spinner />;
   if (props.games) {
     gameList = props.games.map(game => {
       return (
