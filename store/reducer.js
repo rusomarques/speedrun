@@ -1,7 +1,8 @@
 import { actionTypes } from './actions';
 
 export const initState = {
-  games: null
+  games: null,
+  run: null
 };
 
 const reducer = (state = initState, action) => {
@@ -15,6 +16,11 @@ const reducer = (state = initState, action) => {
       return {
         ...state,
         ...{ error: action.error }
+      };
+    case actionTypes.LOAD_RUN_SUCCESS:
+      return {
+        ...state,
+        run: action.runInfo
       };
     default:
       return state;
