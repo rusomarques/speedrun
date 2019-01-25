@@ -10,7 +10,7 @@ function* loadGamesSaga() {
   try {
     const res = yield fetch('https://www.speedrun.com/api/v1/games');
     const data = yield res.json();
-    yield put(loadGamesSuccess(data));
+    yield put(loadGamesSuccess(data.data));
   } catch (err) {
     yield put(loadFailure(err));
   }
