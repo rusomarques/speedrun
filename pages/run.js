@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 
 import { loadRun } from './../store/actions';
+import Layout from '../components/Layout/Layout';
 
 class Run extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class Run extends Component {
     if (this.props.runInfo) {
       run = <p>PlayerName: {this.props.runInfo.playerName}</p>;
     }
-    return run;
+    return <Layout>{run}</Layout>;
   }
 }
 
