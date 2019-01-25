@@ -1,5 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const Index = props => <h1>SPEEDRUN</h1>;
 
-export default Index;
+export default connect()(Index);
